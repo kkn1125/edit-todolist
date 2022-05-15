@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { MdDelete, MdCheck } from 'react-icons/md';
-import { BiCheck, BiEdit, BiLock } from 'react-icons/bi';
+import { BiCheck, BiEdit } from 'react-icons/bi';
 import { useTodoDispatch } from './TodoContext';
 import React, { useState } from 'react';
 
@@ -56,13 +56,13 @@ const Text = styled.div`
     flex: 1;
     color: #bbbbbb;
     ${(props) =>
-        props.done &&
+        !props.done &&
         css`
             color: #495057;
             border-color: #495057;
         `}
     ${(props) =>
-        !props.done &&
+        props.done &&
         css`
             text-decoration-line: line-through;
         `}
@@ -85,7 +85,7 @@ const CheckCircle = styled.div`
     color: #bbbbbb;
     border: 2px solid #bbbbbb;
     ${(props) =>
-        props.done &&
+        !props.done &&
         css`
             color: #3e89ec;
             border-color: #3e89ec;
@@ -140,7 +140,7 @@ export default function TodoItem({ id, text, done, children }) {
     return (
         <TodoItemBlock>
             <CheckCircle {...CheckCircleAttrs}>
-                {done && <MdCheck />}
+                {!done && <MdCheck />}
             </CheckCircle>
             <Text {...TextAttrs}>
                 {value}

@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useTodoState } from './TodoContext';
 
 const animationHeight = '36px';
@@ -88,7 +88,7 @@ export default function TodoHead() {
     // toso state
     const todos = useTodoState();
     // 완료된 todo
-    const done  = todos.filter((todo) => !todo.done);
+    const done  = todos.filter((todo) => todo.done);
     // todo 전체 길이
     const total = todos.length;
 
